@@ -2,17 +2,19 @@ from .base import BaseScraper, PropertyResult
 from .miami_dade import MiamiDadeScraper
 from .redfin import RedfinScraper
 from .realtor import RealtorScraper
+from .zillow import ZillowScraper
 
 # Registry of available scrapers
 # Key is the CLI name, value is (class, default_kwargs)
 SCRAPERS = {
+    "zillow_miami": (ZillowScraper, {"location": "miami-fl"}),
+    "zillow_la": (ZillowScraper, {"location": "los-angeles-ca"}),
+    "zillow_chicago": (ZillowScraper, {"location": "chicago-il"}),
+    "zillow_phoenix": (ZillowScraper, {"location": "phoenix-az"}),
     "miami_dade": (MiamiDadeScraper, {}),
     "redfin_miami": (RedfinScraper, {"location": "Miami, FL"}),
     "redfin_la": (RedfinScraper, {"location": "Los Angeles, CA"}),
-    "redfin_chicago": (RedfinScraper, {"location": "Chicago, IL"}),
-    "redfin_phoenix": (RedfinScraper, {"location": "Phoenix, AZ"}),
     "realtor_miami": (RealtorScraper, {"location": "Miami_FL"}),
-    "realtor_la": (RealtorScraper, {"location": "Los-Angeles_CA"}),
 }
 
 
@@ -31,6 +33,7 @@ __all__ = [
     "MiamiDadeScraper",
     "RedfinScraper",
     "RealtorScraper",
+    "ZillowScraper",
     "SCRAPERS",
     "get_scraper",
 ]
